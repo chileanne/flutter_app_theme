@@ -12,26 +12,139 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      ///light theme
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a blue toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
+
+        ///app bar theme
+        appBarTheme: const AppBarTheme(
+          color: Colors.deepOrange,
+          centerTitle: true,
+          elevation: 1.0,
+          titleTextStyle: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w400,
+            color: Colors.white
+          )
+
+        ),
+
+        ///card theme
+        cardTheme: const CardTheme(
+          color: Colors.deepPurpleAccent,
+          elevation: 2.0
+        ),
+
+
+        ///Elevated Button
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            foregroundColor: Colors.white,
+            backgroundColor: Colors.deepPurpleAccent.shade700
+          )
+        ),
+
+
+        ///Text themes
+        textTheme:  TextTheme(
+          displayLarge:  const TextStyle(
+            fontWeight: FontWeight.w400,
+            fontSize: 22.0,
+            color: Colors.white
+          ),
+
+
+          displayMedium: TextStyle(
+            fontSize:20,
+            fontWeight: FontWeight.w200,
+            color: Colors.deepPurpleAccent.shade200
+          ),
+
+
+            displaySmall: TextStyle(
+                fontSize:20,
+                fontWeight: FontWeight.w200,
+                color: Colors.black
+            )
+        ) ,
+
+
+        ///backgorund color
+        scaffoldBackgroundColor: Colors.grey,
+
+
+
+
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+
+      ///dark theme
+      darkTheme: ThemeData(
+
+        ///app bar theme
+        appBarTheme: const AppBarTheme(
+            color: Colors.black54,
+            centerTitle: true,
+            elevation: 1.0,
+            titleTextStyle: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w400,
+                color: Colors.white
+            )
+
+        ),
+
+        ///card theme
+        cardTheme: const CardTheme(
+            color: Colors.black54,
+            elevation: 2.0
+        ),
+
+
+        ///Elevated Button
+        elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.black26
+            )
+        ),
+
+
+        ///Text themes
+        textTheme:  const TextTheme(
+            displayLarge:  TextStyle(
+                fontWeight: FontWeight.w400,
+                fontSize: 22.0,
+                color: Colors.white
+            ),
+
+
+            displayMedium: TextStyle(
+                fontSize:20,
+                fontWeight: FontWeight.w200,
+                color: Colors.white
+            ),
+
+            displaySmall: TextStyle(
+                fontSize:20,
+                fontWeight: FontWeight.w200,
+                color: Colors.yellow
+            )
+        ) ,
+
+
+        ///backgorund color
+        scaffoldBackgroundColor: Colors.grey.shade300,
+
+
+
+
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+
+
+      home: const MyHomePage(title: 'Flutter Themes'),
     );
   }
 }
@@ -81,12 +194,12 @@ class _MyHomePageState extends State<MyHomePage> {
         // TRY THIS: Try changing the color here to a specific color (to
         // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
         // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        //backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
+      body: SingleChildScrollView(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Column(
@@ -105,13 +218,56 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+
+            ///Card
+         Card(
+              child: SizedBox(
+                width: 200,
+                  height: 200,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text("My Name is ANthony",
+                    style: Theme.of(context).textTheme.displayLarge,)
+                  ],
+                ),
+              )
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+
+
+            SizedBox(height:  20,),
+
+            ///Elevated Button
+            ElevatedButton(
+                onPressed: (){},
+                child: Text("Click")),
+
+            SizedBox(height:  20,),
+
+            Text("I Love to dance Like a BOy",
+            style: Theme.of(context).textTheme.displayMedium,),
+
+            SizedBox(height:  20,),
+
+            Text("Afro Beat is the best",
+                style:Theme.of(context).textTheme.displayMedium?.copyWith(
+                  color: Colors.deepOrange,
+                  fontWeight: FontWeight.w600
+                )),
+
+
+            SizedBox(height:  20,),
+
+            Text("Burna Boy is the best Muscian in the world",
+              style:Theme.of(context).textTheme.displaySmall,),
+
+
+
+
+
+
+
+
           ],
         ),
       ),
